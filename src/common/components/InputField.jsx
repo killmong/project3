@@ -4,7 +4,7 @@ import React from 'react';
 import { useController } from 'react-hook-form';
 
 const InputField = (props) => {
-  const { label, type, name, control, trigger } = props;
+  const { label, type, name, control, trigger} = props;
   const { field, fieldState } = useController({ name, control });
   return (
     <div className="contact-info">
@@ -13,11 +13,13 @@ const InputField = (props) => {
         className="input-field"
         autoComplete="off"
         type={`${type}`}
+        maxLength={type==='number' ? 10 :null}
         placeholder={`Enter ${label}`}
         onChange={(event) => {
           field.onChange(event);
           trigger && trigger();
         }}
+      
       />
       {fieldState?.error?.message && (
         <p className="error-message">

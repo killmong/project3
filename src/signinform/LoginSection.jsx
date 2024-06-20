@@ -1,44 +1,52 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import InputField from '../common/components/InputField';
 import ImageSection from './Imagesection';
+import { Context } from './UserProvider';
 import DropDown from '../common/components/DropDown';
 import DatePickerField from '../common/components/DatePickerField';
+
 import './LoginSection.css';
 
 const LoginSection = () => {
   const {
     handleSubmit,
-    control,trigger,
-    formState: { errors },
-    getValues
+    control,value,
+    trigger,
+    formState: { errors }
   } = useForm();
+  const { updateUserDetails } = useContext(Context);
+
   const courses = [
     { id: 0, name: 'CSE' },
     { id: 1, name: 'EE' },
     { id: 2, name: 'ME' },
     { id: 3, name: 'ECE' }
   ];
+
   const [checked, setChecked] = useState(courses.map((item) => ({ ...item, checked: false })));
-  const values = getValues();
-  console.log(values, 'values');
 
   const array = ['Punjab', 'Chandigarh', 'Haryana', 'J&K', 'Other'];
 
   const onClick = (data) => {
     console.log(data);
+    const selectedCourses = checked.filter((item) => item.checked).map((item) => item.name);
+    const userDetails = { ...data, courses: selectedCourses };
+    updateUserDetails(userDetails);
   };
+
   const handleCheckBoxChange = (id) => {
     setChecked(
       checked.map((item) => (item.id === id ? { ...item, checked: !item.checked } : item))
     );
   };
+  useEffect(() => {
+    console.log(errors); // Log form validation errors
+  }, [errors]);
+
   return (
     <div className="login-container">
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleSubmit(onClick)}>
         <p className="title">Application Form</p>
         <div className="profile-container">
           <ImageSection />
@@ -85,7 +93,7 @@ const LoginSection = () => {
         <div className="date-region-container">
           <div className="contact-info">
             <label className="dob-container">Date Of Birth</label>
-            <DatePickerField name={'date'} control={control} />
+            <DatePickerField name={'date'} control={control} value={value} />
           </div>
           <DropDown label="Select State" array={array} control={control} name={'dropdown'} />
         </div>
@@ -107,7 +115,7 @@ const LoginSection = () => {
           </div>
         </div>
         <div className="button-container">
-          <button type="submit" onClick={handleSubmit(onClick)} className="login-button">
+          <button type="submit" className="login-button">
             Login
           </button>
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginSection from './LoginSection';
-import SubmittedDetails from './SubmittedDetails';
+import LoginSection from './LoginSection.jsx';
+import SubmittedDetails from './SubmittedDetails.jsx';
 
 const LoginForm = () => {
   return (
     <div className="container">
-      <LoginSection />
-      <SubmittedDetails />
+        <LoginSection />
+        <SubmittedDetails />
     </div>
   );
 };
