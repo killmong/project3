@@ -11,8 +11,9 @@ import './LoginSection.css';
 const LoginSection = () => {
   const {
     handleSubmit,
-    control,value,
-    trigger,
+    control,
+    value,
+    trigger,setValue,
     formState: { errors }
   } = useForm();
   const { updateUserDetails } = useContext(Context);
@@ -29,10 +30,10 @@ const LoginSection = () => {
   const array = ['Punjab', 'Chandigarh', 'Haryana', 'J&K', 'Other'];
 
   const onClick = (data) => {
-    console.log(data);
     const selectedCourses = checked.filter((item) => item.checked).map((item) => item.name);
-    const userDetails = { ...data, courses: selectedCourses };
+    const userDetails = { ...data, courses: selectedCourses, state: data.dropdown };
     updateUserDetails(userDetails);
+    setValue('name', 'value', { shouldValidate: true });
   };
 
   const handleCheckBoxChange = (id) => {
@@ -41,7 +42,7 @@ const LoginSection = () => {
     );
   };
   useEffect(() => {
-    console.log(errors); // Log form validation errors
+    console.log(errors);
   }, [errors]);
 
   return (
@@ -95,7 +96,13 @@ const LoginSection = () => {
             <label className="dob-container">Date Of Birth</label>
             <DatePickerField name={'date'} control={control} value={value} />
           </div>
-          <DropDown label="Select State" array={array} control={control} name={'dropdown'} />
+          <DropDown
+            label="Select State"
+            array={array}
+            control={control}
+            name="dropdown"
+            trigger={trigger}
+          />
         </div>
         <div className="course-container">
           <p>Which Course are You Interested in?</p>

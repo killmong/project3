@@ -5,8 +5,8 @@ import SubmittedDetails from './SubmittedDetails.jsx';
 const LoginForm = () => {
   return (
     <div className="container">
-        <LoginSection />
-        <SubmittedDetails />
+        <LoginSection  />
+        <SubmittedDetails  />
     </div>
   );
 };

@@ -1,12 +1,21 @@
-.detail-container {
+.details-container {
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1em;
-  align-items: center;
+  flex-direction: column;
   border-radius: 10px;
   align-items: left;
 }
 
+.title {
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  margin: 5px auto 0px auto;
+  font-size: 20px;
+  padding: 0px 5px 5px 5px  ;
+  align-items: center;}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}

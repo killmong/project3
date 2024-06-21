@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useController } from 'react-hook-form';
@@ -12,6 +11,7 @@ const DropDown = (props) => {
       <label>{label}</label>
       <select
         name={name}
+        value={field.value || ''}
         onChange={(event) => {
           field.onChange(event);
           trigger && trigger();
@@ -33,7 +33,10 @@ const DropDown = (props) => {
 
 DropDown.propTypes = {
   label: PropTypes.string.isRequired,
-  array: PropTypes.array.isRequired
+  array: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
+  control: PropTypes.object.isRequired,
+  trigger: PropTypes.func
 };
 
 export default DropDown;
