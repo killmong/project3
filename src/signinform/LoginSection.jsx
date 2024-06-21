@@ -13,7 +13,8 @@ const LoginSection = () => {
     handleSubmit,
     control,
     value,
-    trigger,setValue,
+    trigger,
+    setValue,
     formState: { errors }
   } = useForm();
   const { updateUserDetails } = useContext(Context);
@@ -52,25 +53,23 @@ const LoginSection = () => {
         <div className="profile-container">
           <ImageSection />
         </div>
-        <div className="login-info">
-          <div className="sub-container">
-            <InputField
-              type="text"
-              label="First Name"
-              name="firstname"
-              control={control}
-              errors={errors}
-              trigger={trigger}
-            />
-            <InputField
-              type="text"
-              label="Last Name"
-              name="lastname"
-              control={control}
-              errors={errors}
-              trigger={trigger}
-            />
-          </div>
+        <div className="sub-container">
+          <InputField
+            type="text"
+            label="First Name"
+            name="firstname"
+            control={control}
+            errors={errors}
+            trigger={trigger}
+          />
+          <InputField
+            type="text"
+            label="Last Name"
+            name="lastname"
+            control={control}
+            errors={errors}
+            trigger={trigger}
+          />
         </div>
         <div>
           <InputField
@@ -93,8 +92,8 @@ const LoginSection = () => {
 
         <div className="date-region-container">
           <div className="contact-info">
-            <label className="dob-container">Date Of Birth</label>
-            <DatePickerField name={'date'} control={control} value={value} />
+            <label>Date Of Birth</label>
+            <DatePickerField  name={'date'} control={control} value={value} />
           </div>
           <DropDown
             label="Select State"

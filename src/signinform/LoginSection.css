@@ -4,7 +4,9 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 0;
+  flex-wrap: wrap;
   height: 100vh;
+  width: 100vw;
 }
 .login-container {
   background-color: #ffffff;
@@ -12,22 +14,11 @@
   justify-content: space-between;
   flex-direction: row;
   border-radius: 6px;
-  padding: 10px 0 0 10px;
-}
+  margin: auto;
+  align-items: flex-start;
+  }
 
-.details-container{
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border-radius: 6px;
-  padding: 10px 0 0 10px;
-  background-color: #b7babd;
-  border-radius: 6px;
-  align-items: left;
-
-}
-.form-container,.details-container {
+.form-container {
   border-radius: 6px;
   align-items: left;
 }
@@ -36,7 +27,9 @@
   font-size: 20px;
   font-weight: bolder;
   text-align: center;
-  margin: 5px auto 0px auto;
+  padding: 5px;
+  margin: 3em 0 0 0;
+  
 }
 
 .login {
@@ -160,9 +153,6 @@ input[type='number']::-webkit-inner-spin-button {
   display: inline-flex;
   color: #71757a;
 }
-.course-container p {
-  font-size: 16px;
-}
 input[type='checkbox'] {
   width: 1rem;
   height: 1rem;
@@ -182,7 +172,9 @@ input[type='checkbox'] {
   transform: rotate(0.2deg);
   border-radius: 6px;
   width: 190px;
+  cursor: pointer;
 }
+
 .checkbox {
   position: relative;
   cursor: pointer;
@@ -209,3 +201,12 @@ input[type='checkbox'] {
   border-radius: 12px;
   background-color: #ffffff;
 }
+.date-picker-field .input-field{
+  cursor: pointer;
+}
+
+@media screen and (min-width:1180px ){
+  .container{
+     overflow: hidden;
+  }
+ }
